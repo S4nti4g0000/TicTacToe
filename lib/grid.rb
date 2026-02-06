@@ -1,8 +1,12 @@
 class Grid
 
-  def generate_grid()
+  attr_accessor :nested_array
 
-    nested_array = [[1,2,3],[4,5,6],[7,8,9]]
+  def initialize
+    @nested_array = [[1,2,3],[4,5,6],[7,8,9]]
+  end  
+
+  def generate_grid()
 
     nested_array.each do |item|
       item.each do |inn_item|
@@ -11,6 +15,14 @@ class Grid
       print "\n"
     end
 
-  end 
-   
+    return '_______________________'
+
+  end
+
+  def modify_grid(position)
+
+    
+
+  end
+
 end
