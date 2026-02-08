@@ -19,9 +19,17 @@ class Grid
 
   end
 
-  def modify_grid(position)
+  def modify_grid(position, arr = nested_array)
 
-    
+    arr.each.with_index do |row, r_i|
+      row.each.with_index do |value, v_i|
+        if value == position
+          arr[r_i][v_i] = 'X'
+        end
+      end
+    end
+
+    generate_grid()
 
   end
 
