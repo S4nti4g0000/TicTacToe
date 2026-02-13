@@ -11,7 +11,7 @@ class Player
     def player_choice ()
         print "Choose a position from the board: "
         choice = gets.chomp.to_i
-        @grid.modify_grid(choice)
+        @grid.modify_grid(choice, 'X')
     end
 
 end
