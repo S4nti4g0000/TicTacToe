@@ -17,6 +17,16 @@ while game_on
   puts "- Computer's Turn - \n"
   computer.computer_choice
 
+  new_grid.nested_array.select do |row|
+    if row == ['X','X','X']   
+      puts "\nPLAYER WINS! \n"
+      game_on = false
+    elsif row == ['O','O','O']
+      puts "\nCOMPUTER WINS! \n"
+      game_on = false
+    end
+  end
+
   break if new_grid.nested_array.all? {|row| row.all? {|e| e.is_a?(String)}}
 
 end
