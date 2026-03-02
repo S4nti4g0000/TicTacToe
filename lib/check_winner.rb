@@ -9,6 +9,14 @@ module CheckWinner
     end
   
   end
+
+  def row_check(grid, choice)
+    
+    return true if grid[0].all?(choice) ||
+                   grid[1].all?(choice) ||
+                   grid[2].all?(choice)
+
+  end
   
   def diagonal_check(grid, choice)
     
@@ -28,6 +36,6 @@ module CheckWinner
   
   end
 
-  module_function :column_check, :diagonal_check
+  module_function :column_check, :diagonal_check, :row_check
 
 end
