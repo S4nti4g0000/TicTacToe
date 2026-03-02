@@ -13,31 +13,33 @@ new_grid.generate_grid
 
 while game_on  
 
-  puts "- Player's Turn - \n"
-  player.player_choice
-  #puts "- Computer's Turn - \n"
-  #computer.computer_choice
+  if new_grid.nested_array.all? {|row| row.all? {|e| e.is_a?(String)}}
+    game_on = false 
+  else 
+    puts "- Player's Turn - \n"
+    player.player_choice
 
-  new_grid.nested_array.select.with_index do |row, i|
-    if row == ['X','X','X']
-      puts "\nPLAYER WINS! \n"
-      game_on = false
-    elsif row == ['O','O','O']
-      puts "\nCOMPUTER WINS! \n"
-      game_on = false
-    end
-
+    unless !game_on && !player.can_continue
+      puts "- Computer's Turn - \n"
+      computer.computer_choice 
+    end    
   end
+
   
   if CheckWinner.column_check(new_grid.nested_array, 'X') == true || 
-     CheckWinner.diagonal_check(new_grid.nested_array, 'X') == true
+     CheckWinner.diagonal_check(new_grid.nested_array, 'X') == true ||
+     CheckWinner.row_check(new_grid.nested_array, 'X')
 
     puts "\nPLAYER WINS! \n"
     game_on = false
-  end
-  
 
-  break if new_grid.nested_array.all? {|row| row.all? {|e| e.is_a?(String)}}
+  elsif CheckWinner.column_check(new_grid.nested_array, 'O') == true || 
+        CheckWinner.diagonal_check(new_grid.nested_array, 'O') == true ||
+        CheckWinner.row_check(new_grid.nested_array, 'O')
+    
+      puts "\nCOMPUTER WINS! \n"
+      game_on = false
+  end
 
 end
 
